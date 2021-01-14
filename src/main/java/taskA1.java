@@ -20,11 +20,10 @@ import java.util.ArrayList;
 */
 
 public class taskA1 {
-    static final File task = new File("C:\\Users\\u0139221\\Desktop\\task_A1.html");
+    static final File task = new File("C:\\Users\\xxxxxxxx\\Desktop\\task_A1.html");
     static final String url = "C:\\Users\\u0139221\\Desktop\\task_A1.html";
 
     public static void main(String[] args) throws IOException {
-       // taskA1a(url);
         try {
             Document doc = Jsoup.parse(task, "UTF-8", "http://whatever.com");
             Elements tables = doc.select("table");
@@ -34,7 +33,6 @@ public class taskA1 {
                     if (!(tr instanceof TextNode)) {
                         for (Node th : tr.childNodes()) {
                             //System.out.println(th.toString());
-                            // System.out.println(th.toString());
                         }
                     }
                 }
@@ -49,19 +47,5 @@ public class taskA1 {
             e.printStackTrace();
         }
     }
-
-
-
 }
-class JSoupFromFileEx {
 
-    public static void main(String[] args) throws IOException {
-
-        String fileName = "C:\\Users\\u0139221\\Desktop\\task_A1.html";;
-
-        Document doc = Jsoup.parse(new File(fileName), "utf-8");
-        Element divTag = doc.getElementById("primera odd");
-
-        System.out.println(divTag.text());
-    }
-}
