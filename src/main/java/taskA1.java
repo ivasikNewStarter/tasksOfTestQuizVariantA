@@ -7,6 +7,7 @@ import org.jsoup.nodes.TextNode;
 import org.jsoup.select.Elements;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 
 
 /* Task #A1
@@ -19,31 +20,48 @@ import java.io.IOException;
 */
 
 public class taskA1 {
-    static final File task = new File("C:\\Users\\xxxxxxx\\Desktop\\task_A1.html");
-    public static void main(String[] args) {
+    static final File task = new File("C:\\Users\\u0139221\\Desktop\\task_A1.html");
+    static final String url = "C:\\Users\\u0139221\\Desktop\\task_A1.html";
+
+    public static void main(String[] args) throws IOException {
+       // taskA1a(url);
         try {
-            Document doc = Jsoup.parse(task, "UTF-8","http://whatever.com");
+            Document doc = Jsoup.parse(task, "UTF-8", "http://whatever.com");
             Elements tables = doc.select("table");
             for (Element table : tables) {
                 Element tableBody = table.selectFirst("tbody");
                 for (Node tr : tableBody.childNodes()) {
                     if (!(tr instanceof TextNode)) {
                         for (Node th : tr.childNodes()) {
-                            System.out.println(th.toString());
+                            //System.out.println(th.toString());
                             // System.out.println(th.toString());
                         }
                     }
                 }
             }
-            System.out.println("Jsoup way");
-            Elements specificRows = doc.select("th:contains(2017/10/10)");
 
-            for (Element r : specificRows) {
-                System.out.println(r.toString());
-            }
+            Elements elements = doc.select("tr");
+            System.out.println("Output: ");
+            for(Element e : elements)
+                System.out.println( e.text());
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+
+
+}
+class JSoupFromFileEx {
+
+    public static void main(String[] args) throws IOException {
+
+        String fileName = "C:\\Users\\u0139221\\Desktop\\task_A1.html";;
+
+        Document doc = Jsoup.parse(new File(fileName), "utf-8");
+        Element divTag = doc.getElementById("primera odd");
+
+        System.out.println(divTag.text());
     }
 }
