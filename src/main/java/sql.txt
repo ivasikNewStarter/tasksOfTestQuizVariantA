@@ -1,0 +1,23 @@
+Task #SQL2
+•	Will find any customers that ordered more than 200 tones of the product and is from the UK.
+first sql query:
+
+SELECT ContactName as Customer  FROM ORDERS
+where Amount > 200
+and Country = 'UK';
+---------------------------------------------
+•	Will update the type of the product to corn for client with id=2
+
+second sql query:
+UPDATE ORDERS
+SET
+    Type = 'corn'
+WHERE
+    Id = 2;
+ _______________________________________________
+•	Get the total amount for UK
+third sql query:
+SELECT SUM(Amount) as TotalAmount
+FROM ORDERS
+where Country = 'UK';
+_______________________________________________
